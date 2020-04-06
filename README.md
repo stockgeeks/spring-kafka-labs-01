@@ -1,55 +1,48 @@
-# spring-kafka-labs-01
+# Lab 1 - Create a spring boot application
 
-This is the repository containing the initial labs for the Resona Spring Kafka Basics course. 
+In this lab you will create a Spring Boot Application as a starting point, in order to do that open a browser and navigate to [https://start.spring.io](https://start.spring.io), you should see this website displayed below. 
 
-In the first part of these labs you will create and practice: 
+> Try to use the same versions as we recommend on the labs but don't worry too much if the version doesn't exactly match the version you see in this guide, Spring Boot evolves fast but most likely small divergence in the versions will not break compatibility with the exercises here, we will update the exercises every time this happens. 
 
-- A spring-boot project
-- A Simple Rest API which you will later use to send messages to Kafka
-- A docker-compose file to run Kafka locally
-- Add spring-kafka dependency to your project
-- The simplest possible producer to send messages to Kafka using spring-kafka default configurations
-- The simplest possible consumer to consume the messages from kafka using spring-kafka default configurations
-- How to use the Kafka built in console consumer and producer to send and receive messages from Kafka
-- How to install and run Kafkacat to produce and consume messages from Kafka
+Spring Boot Initializer Web Site: 
 
-In the second part of the labs you will expand your initial project and create and practice: 
+![Spring Initialzr Web Site](./imgs/spring-initializr-web-site.png)
 
-- A docker-compose file to run Kafa and Schema registry
-- Use sprink-kafka beans to configure new clients
-- Create a Producer using an Avro schema
-- Create a Consumer using an Avro schema
-- Use the kafka avro console consumer
-- Use the kafka producer console consumer
-- Operate basic endpoints from the schema registry
+Fill in the fields with the following values, leave any fields not mentioned here with the default values: 
+
+Project: `Maven Project`
+
+Language: `Java`
+
+Spring Boot: `2.2.5`
+
+Project Metadata:
+
+    Group: io.stockgeeks
+    Artifact: simple-spring-kafka
+    Options: 
+        Name: spring-kafka-labs
+        Description: My first spring-kafka-project
+        Package name: io.stockgeeks.springkafka.labs
+        Packaging: Jar
+        Java: 11
+
+Dependencies: 
+
+    Spring for Apache Kafka
+    Spring Web    
+
+Click the green `Generate` button and download the project. 
+
+Extract to your prefered working directory location and import the project in your favorite IDE.
+
+# Build and run the project
+
+ - Open a command line and navigate to the place where you extracted the generated project and bulild the project: `mvn clean package`
+
+ - Once the project finish building run it: `mvn springboot:run` wait for the start message.
 
 
-# How to do the labs
 
-Each lab step is explained and represented in a branch on this project with the name ending in `-exercise`. 
-
-The sequence of the labs are explicit in the branch name and each exercise has a corresponding branch with the same name and `-solution` appended to the name. 
-
-The branch names always start with a number and are sequential, to complete the exercise checkout the exercise branch and read the instructions in the README file on that branch, exercises build on each other so following the sequence is important: 
-
-01-create-spring-boot-project-exercise
-01-create-spring-boot-project-solution
-
-02-create-simple-rest-endpoint-exercise
-02-create-simple-rest-endpoint-solution
-
-# Starting the labs
-
-Let's start the first lab, you can use any IDE of your prefernece (Eclipse, IntelliJ, VSCode) to start the first lab follow the instructions below: 
-
-- clone this project in your local machine, open a terminal window and execute the command to checkout the project: 
-    - `git clone git@github.com:stockgeeks/spring-kafka-labs-01.git`
-
-- checkout the first lab, open the README file and follow the instructions there.
-    - `git checkout 01-create-spring-boot-project-exercise`  
-
-Once you finish the lab you can compare your solution with our solution, for that checkout the solution branch: `git checkout 01-create-spring-boot-project-solution`
-
-Continue to the next lab checking out the next branch: `git checkout 02- ... `
 
 

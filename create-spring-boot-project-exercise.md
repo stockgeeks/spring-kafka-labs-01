@@ -1,4 +1,4 @@
-# Lab 1 - Create a spring boot application
+# Create a spring boot application
 
 In this lab you will create a Spring Boot Application as a starting point, in order to do that open a browser and navigate to [https://start.spring.io](https://start.spring.io), you should see this website displayed below. 
 
@@ -14,16 +14,16 @@ Project: `Maven Project`
 
 Language: `Java`
 
-Spring Boot: `2.2.5`
+Spring Boot: `2.2.6`
 
 Project Metadata:
 
-    Group: io.stockgeeks
+    Group: io.resona
     Artifact: simple-spring-kafka
     Options: 
         Name: spring-kafka-labs
-        Description: My first spring-kafka-project
-        Package name: io.stockgeeks.springkafka.labs
+        Description: My spring-kafka-project
+        Package name: io.resona.springkafka.labs
         Packaging: Jar
         Java: 11
 
@@ -34,13 +34,15 @@ Dependencies:
 
 Click the green `Generate` button and download the project. 
 
-Extract to your prefered working directory location and import the project in your favorite IDE.
+Extract to your prefered working directory location and optionally import the project in your favorite IDE if you want to explore it.
 
 # Build and run the project
 
- - Open a command line and navigate to the place where you extracted the generated project and bulild the project: `mvn clean package`
+ - Open a command line, navigate to the place where you extracted the generated project and bulild the project using Maven: `mvn clean package`
 
- - Once the project finish building run it: `mvn springboot:run` wait for the start message.
+ - Once the project finish building, run it: `mvn springboot:run` wait for the starting message.
+
+ Congratulations you now have a Spring Boot Application Running in your local developer Machine.
 
 
 

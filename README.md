@@ -2,16 +2,16 @@
 
 This is the repository containing the initial labs for the Resona Spring Kafka Basics course. 
 
-In the first part of these labs you will create and practice: 
+In the first part of these labs you will create and practice along with the training Videos and you will build or practice: 
 
-- A spring-boot project
-- A Simple Rest API which you will later use to send messages to Kafka
-- A docker-compose file to run Kafka locally
-- Add spring-kafka dependency to your project
-- The simplest possible producer to send messages to Kafka using spring-kafka default configurations
-- The simplest possible consumer to consume the messages from kafka using spring-kafka default configurations
-- How to use the Kafka built in console consumer and producer to send and receive messages from Kafka
-- How to install and run Kafkacat to produce and consume messages from Kafka
+- A docker-compose file to run Kafka locally.
+- How to use the Kafka built in console consumer and producer to send and receive messages from Kafka.
+- Create and run a Spring Boot project.
+- Add spring-kafka dependency to your project.
+- The simplest possible producer to send messages to Kafka using spring-kafka default configurations.
+- The simplest possible consumer to consume the messages from kafka using spring-kafka default configurations.
+- Create a Simple Rest API which you will use to call a producer and send simple messages to Kafka.
+- How to install and run Kafkacat.
 
 In the second part of the labs you will expand your initial project and create and practice: 
 

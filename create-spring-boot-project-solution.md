@@ -1,6 +1,6 @@
-# Lab 1 - Create a spring boot application
+# Create a Spring Boot Application
 
-If you followed the lab exercise you should have a springboot application in your working directory with the following specifications.
+If you followed the lab exercise you should have a Spring Boot Application in your working directory with the following specifications.
 
 Project: `Maven Project`
 
@@ -10,11 +10,11 @@ Spring Boot: `2.2.6`
 
 Project Metadata:
 
-    Group: io.stockgeeks
+    Group: io.resona
     Artifact: simple-spring-kafka
     Name: spring-kafka-labs
-    Description: My first spring-kafka-project
-    Package name: io.stockgeeks.springkafka.labs
+    Description: My spring-kafka-project
+    Package name: io.resona.springkafka.labs
     Packaging: Jar
     Java: 11
 
@@ -53,4 +53,4 @@ The spring-kafka dependency brinks spring-kafka and the kafka-client libraries b
 
 To stop the running application you can select the terminal window where it's running and hit `CTR + C`
 
-You're done with the first lab!
+Congratulations you're done with this lab!

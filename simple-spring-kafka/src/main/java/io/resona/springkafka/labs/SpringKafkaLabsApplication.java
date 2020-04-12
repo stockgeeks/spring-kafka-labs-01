@@ -1,4 +1,4 @@
-package io.stockgeeks.springkafka.labs;
+package io.resona.springkafka.labs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

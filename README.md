@@ -7,10 +7,8 @@ In the first part of these labs you will create and practice along with the trai
 - A docker-compose file to run Kafka locally.
 - How to use the Kafka built in console consumer and producer to send and receive messages from Kafka.
 - Create and run a Spring Boot project.
-- Write a Spring Kafka Consumer Test.
-- Write a Spring Kafka Producer Test.
-- Create simplest possible spring-kafka Consumer to consume the messages from a Kafka topic using spring-kafka default configurations.
-- Create the simplest possible producer to send messages to Kafka using spring-kafka default configurations.
+- Create simplest possible spring-kafka Consumer to consume the messages from a Kafka topic using spring-kafka default configurations and write a Spring Kafka Consumer Test.
+- Create the simplest possible producer to send messages to Kafka using spring-kafka default configurations and write a Spring Kafka Producer Test.
 - Create a Simple Rest API which you will use to call a producer and send simple messages to Kafka.
 - Create a simple Kafka Consumer Test using Kafka Mocks, without Spring Kafka.
 - Create a simple Kafka Producer Test using Kafka Mocks, without Spring Kafka.

@@ -1,8 +1,17 @@
-# Create a spring boot application
+# Create a Spring Boot Application
 
-In this lab you will create a Spring Boot Application as a starting point, in order to do that open a browser and navigate to [https://start.spring.io](https://start.spring.io), you should see this website displayed below. 
+In this lab you will create a Spring Boot Application wich will be used in other exercises as a starting point for tasks and hands on exercises. 
 
-> Try to use the same versions as we recommend on the labs but don't worry too much if the version doesn't exactly match the version you see in this guide, Spring Boot evolves fast but most likely small divergence in the versions will not break compatibility with the exercises here, we will update the exercises every time this happens. 
+## Goal 
+
+The goal of this lab is to have a running Spring Boot Application with `Spring for Apache Kafka and Spring Web` configured.
+
+
+## Task - Create a new Spring Boot Application
+
+Open a browser and navigate to [https://start.spring.io](https://start.spring.io), you should see this website displayed below. 
+
+> Try to use the same versions as we recommend on the labs but don't worry too much if the version doesn't exactly match the version you see in this guide, Spring Boot, Kafka and Spring Kafka evolve fast but most likely small divergence in the versions will not break compatibility with the exercises here, we will update the exercises every time this happens. 
 
 Spring Boot Initializer Web Site: 
 
@@ -34,9 +43,13 @@ Dependencies:
 
 Click the green `Generate` button and download the project. 
 
-Extract to your prefered working directory location and optionally import the project in your favorite IDE if you want to explore it.
+## Task - Extract the generated Application to working directory
 
-# Build and run the project
+Extract the downloaded file to your prefered working directory location where you put your studying projects. 
+
+> Optionally import the project in your favorite IDE if you want to explore it.
+
+## Task - Build and run the project
 
  - Open a command line, navigate to the place where you extracted the generated project and bulild the project using Maven: `mvn clean package`
 

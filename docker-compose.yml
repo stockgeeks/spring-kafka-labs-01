@@ -14,7 +14,7 @@ services:
     # TODO Task 4: Just in case Zookeeper isn't up and running yet we automatically restart this container
     restart: always
     environment:
-      KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:29092,LISTENER_DOCKER_EXTERNAL://kafka:9092
+      KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:29092,LISTENER_DOCKER_EXTERNAL://localhost:9092
       # KAFKA_ADVERTISED_LISTENERS: comma-separated list of listeners with their the host/ip and port.
       # This is the metadata that’s passed back to clients.
       # LISTENER_DOCKER_INTERNAL: This will make Kafka accessible from outside of the Docker network (your machine).

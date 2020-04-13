@@ -1,56 +1,32 @@
 # Create a Spring Boot Application
 
-If you followed the lab exercise you should have a Spring Boot Application in your working directory with the following specifications.
+In this lab you will create a Spring Boot Application wich will be used in other exercises as a starting point for tasks and hands on exercises. 
 
-Project: `Maven Project`
+## Goal 
 
-Language: `Java`
-
-Spring Boot: `2.2.6`
-
-Project Metadata:
-
-    Group: io.resona
-    Artifact: simple-spring-kafka
-    Name: spring-kafka-labs
-    Description: My spring-kafka-project
-    Package name: io.resona.springkafka.labs
-    Packaging: Jar
-    Java: 11
-
-Dependencies: 
-
-    Spring for Apache Kafka
-    Spring Web    
+The goal of this lab is to have a running Spring Boot Application with `Spring for Apache Kafka and Spring Web` configured.
 
 
-# Build and run the project
+## Task - Create a new Spring Boot Application
 
- - Open a command line and navigate to the place where you extracted the generated project and bulild the project: `mvn clean package`
+Navigate to [https://start.spring.io](https://start.spring.io)
 
- - Once the project finish building run it: `mvn spring-boot:run` wait for the start message, you whould see a terminal like this: 
+Fill in the form and click Generate:
 
-![spring-boot-app-running.png](./imgs/spring-boot-app-running.png)
+![Spring Initialzr Web Site](./imgs/spring-initializr-web-site.png)
 
-You should have a spring-boot application now running on port 8080. 
+## Task - Extract the generated Application to working directory
 
-The most important parts to check up to this point is the pom.xml file of the project, specifically, the spring-kafka and web dependencies. 
+We added the extracted content to a folder in this trainning repo, check the VSCode overview in the image below:
 
-```
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.kafka</groupId>
-    <artifactId>spring-kafka</artifactId>
-</dependency>
-```
+![Solution - Extract generated App](imgs/solution_task_extract_generated_springboot_app_to_working_dir.png)
 
-The spring-boot-starter-web dependency automatically bundles a Tomcat instance and bring the Spring Web MVC libraries. 
+## Task - Build and run the project
 
-The spring-kafka dependency brinks spring-kafka and the kafka-client libraries by transient dependency.
+ Build the project using Maven, same directory where the `pom.xml` is: `mvn clean package`
 
-To stop the running application you can select the terminal window where it's running and hit `CTR + C`
+![Solution - Build Project](imgs/solution_task_build_project.png)
 
-Congratulations you're done with this lab!
+ Run it: `mvn spring-boot:run` 
+
+![Solution - Run Project](imgs/solution_task_run_project.png)

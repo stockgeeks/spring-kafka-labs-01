@@ -4,3 +4,5 @@
 .idea
 target
 build
+.vscode
+.eclipse

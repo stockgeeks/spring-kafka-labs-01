@@ -1,4 +1,5 @@
 spring:
   kafka:
     producer:
+      # TASK - add configuration for test broker
       bootstrap-servers: ${spring.embedded.kafka.brokers}

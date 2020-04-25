@@ -10,6 +10,10 @@ public class SimpleProducer {
 
   private KafkaTemplate<String, String> kafkaTemplate;
 
+  public SimpleProducer(KafkaTemplate<String, String> kafkaTemplate) {
+    this.kafkaTemplate = kafkaTemplate;
+  }
+
   public void send(String message) {
     log.info("Sending message: {}", message);
     kafkaTemplate.send(TOPIC, null, message );

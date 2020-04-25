@@ -1,22 +1,19 @@
 package io.resona.springkafka.labs.quotes;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.serialization.StringSerializer;
+// Task - Make sure to import JUnit test version 5 instead of version 4. i.e - should not import org.junit.Test
 import org.junit.jupiter.api.Test;
+import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
-import org.springframework.kafka.listener.MessageListenerContainer;
+import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
-import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -37,15 +34,18 @@ public class SimpleProducerTest {
   @Test
   public void testProducer() throws Exception {
     final String testMessage = "My test message";
-    // TASK - test the producer, create a test Consumer to validate the message
-
-
     // TASK - send the message
     simpleProducer.send(testMessage);
 
-    // TASK - check it was received by test consumer.
-    
+    // TASK - test the producer, create a test Consumer to validate the message
+    Map<String, Object> consumerProps = KafkaTestUtils.consumerProps("test-group", "true", embeddedKafkaBroker);
+    consumerProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    DefaultKafkaConsumerFactory<String, String> cf = new DefaultKafkaConsumerFactory<>(consumerProps);
+    Consumer<String, String> consumer = cf.createConsumer();
+    this.embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, SimpleProducer.TOPIC);
+    ConsumerRecord<String, String> consumedRecord = KafkaTestUtils.getSingleRecord(consumer, SimpleProducer.TOPIC);
 
+    assertEquals(testMessage, consumedRecord.value());
   }
 
 }

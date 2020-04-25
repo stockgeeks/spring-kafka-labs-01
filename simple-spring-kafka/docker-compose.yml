@@ -1,0 +1,50 @@
+# Docker compose file format 3.7 Required Docker Engine 18.06.0+
+# For more information see: https://docs.docker.com/compose/compose-file/compose-versioning/
+version: '3.7'
+
+services:
+  # Confluent Kafka Docker image see: https://hub.docker.com/r/confluentinc/cp-kafka/
+  kafka:
+    image: confluentinc/cp-kafka:5.4.1
+    container_name: kafka
+    hostname: kafka
+    restart: always
+    environment:
+      KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:29092,LISTENER_DOCKER_EXTERNAL://localhost:9092
+      # KAFKA_ADVERTISED_LISTENERS: comma-separated list of listeners with their the host/ip and port.
+      # This is the metadata that’s passed back to clients.
+      # LISTENER_DOCKER_INTERNAL: This will make Kafka accessible from outside of the Docker network (your machine).
+      # LISTENER_DOCKER_EXTERNAL: This will make Kafka accessible to other Docker containers by advertising it’s
+      # location on the Docker network.
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:29092,LISTENER_DOCKER_EXTERNAL://localhost:9092
+      # Key/value pairs for the security protocol to use, per listener name
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      # Kafka is depending on Zookeeper to run.
+      # So we have to configure the hostname and port is specified for the Zookeeper container.
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      # The `KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR` is set to 1 for a single-node cluster.
+      # Unless you have three or more nodes you do not need to change this from the default.
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      # Each Kafka partition will have 4 partitions
+      KAFKA_NUM_PARTITIONS: 4
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      # Whether or not to automatically create topics in case the topic does not exist
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      # We don't have support with Confluent ;)
+      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+
+  # Confluent Zookeeper Docker image see: https://hub.docker.com/r/confluentinc/cp-zookeeper/
+  zookeeper:
+    container_name: zookeeper
+    hostname: zookeeper
+    image: confluentinc/cp-zookeeper:5.4.1
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - 2181:2181

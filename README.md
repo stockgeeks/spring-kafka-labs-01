@@ -9,22 +9,17 @@ In the first part of these labs you will create and practice along with the trai
 - Create and run a Spring Boot project.
 - Create simplest possible spring-kafka Consumer to consume the messages from a Kafka topic using spring-kafka default configurations and write a Spring Kafka Consumer Test.
 - Create the simplest possible producer to send messages to Kafka using spring-kafka default configurations and write a Spring Kafka Producer Test.
-- Create a Simple Rest API which you will use to call a producer and send simple messages to Kafka.
-- Create a simple Kafka Consumer Test using Kafka Mocks, without Spring Kafka.
-- Create a simple Kafka Producer Test using Kafka Mocks, without Spring Kafka.
-- Create the simplest possible Kafka Consumer without Spring Kafka, only direct Kafka Dependencies.
-- Create the simplest possible Kafka Producer without Spring Kafka, only direct Kafka dependencies.
-
+- Create a simple Kafka Consumer with Test using Kafka Mocks, without Spring Kafka.
+- Create a simple Kafka Producer with Test using Kafka Mocks, without Spring Kafka.
 - How to install and run Kafkacat.
 
 In the second part of the labs you will expand your initial project and create and practice: 
 
 - A docker-compose file to run Kafa and Schema registry
 - Use sprink-kafka beans to configure new clients
-- Create a Producer using an Avro schema
-- Create a Consumer using an Avro schema
-- Use the kafka avro console consumer
-- Use the kafka producer console consumer
+- Create a basic REST endpoint with TEST in Spring which we will connect to a producer in later exercises.
+- Create a Producer using an Avro schema and use a kafka avro console consumer
+- Create a Consumer using an Avro schema and use a kafka avro console producer
 - Operate basic endpoints from the schema registry
 
 

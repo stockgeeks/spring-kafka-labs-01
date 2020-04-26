@@ -27,13 +27,11 @@ services:
       # Unless you have three or more nodes you do not need to change this from the default.
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_DEFAULT_REPLICATION_FACTOR: 1
-      # Each Kafka partition will have 4 partitions
-      KAFKA_NUM_PARTITIONS: 4
+      # Each Kafka topic will have 1 partition
+      KAFKA_NUM_PARTITIONS: 1
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       # Whether or not to automatically create topics in case the topic does not exist
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      # We don't have support with Confluent ;)
-      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
     ports:
       - 9092:9092
     depends_on:

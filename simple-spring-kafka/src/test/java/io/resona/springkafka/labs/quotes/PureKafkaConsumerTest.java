@@ -1,6 +1,6 @@
-package io.resona.springkafka.labs.consumer;
+package io.resona.springkafka.labs.quotes;
 
-import io.resona.kafka.labs.consumer.PureKafkaConsumer;
+import io.resona.kafka.labs.quotes.PureKafkaConsumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.common.TopicPartition;
@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
@@ -34,6 +35,7 @@ public class PureKafkaConsumerTest {
     ConsumerRecords<String, String> consumerRecords = new ConsumerRecords<>(records);
     doReturn(consumerRecords).when(pureKafkaConsumer).getRecords();
     pureKafkaConsumer.initialize();
+    pureKafkaConsumer.getCountDownLatch().await(3_000, TimeUnit.MILLISECONDS);
     assertEquals(0L, pureKafkaConsumer.getCountDownLatch().getCount());
     pureKafkaConsumer.getShouldRun().set(false);
     pureKafkaConsumer.close();

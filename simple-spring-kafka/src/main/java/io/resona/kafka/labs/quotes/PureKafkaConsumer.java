@@ -1,4 +1,4 @@
-package io.resona.kafka.labs.consumer;
+package io.resona.kafka.labs.quotes;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,8 @@
 package io.resona.kafka.labs.consumer;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -14,27 +16,46 @@ import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Slf4j
 @Repository
-public class PureKafkaConsumer {
+public class PureKafkaConsumer implements Runnable {
 
-  private KafkaConsumer<String, String> kafkaConsumer;
+  public static final String STOCK_QUOTES_TOPIC = "stock-quotes";
+  private Consumer<String, String> kafkaConsumer;
+  @Getter
+  private CountDownLatch countDownLatch = new CountDownLatch(1);
+  @Getter
+  private AtomicBoolean shouldRun = new AtomicBoolean(false);
+
+  public PureKafkaConsumer() {
+    kafkaConsumer = new KafkaConsumer<>(consumerConfiguration());
+  }
 
   @PostConstruct
   public void initialize() {
-    kafkaConsumer = new KafkaConsumer<>(consumerConfiguration());
-    kafkaConsumer.subscribe(Collections.singletonList("stock-quotes"));
-    startConsumer();
+    kafkaConsumer.subscribe(Collections.singletonList(STOCK_QUOTES_TOPIC));
+    shouldRun.set(true);
+    // we start the pooling consumer in new Thread so we don't block main thread.
+    new Thread(this).start();
   }
 
-  public void startConsumer() {
+  public void run() {
     log.info("PureKafkaConsumer.startConsumer");
     // we will start pooling for entries
-    while (true) {
-      ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.of(300, ChronoUnit.MILLIS));
-      records.forEach(record -> log.info("Got record: {}", record.value()));
+    while (shouldRun.get()) {
+      ConsumerRecords<String, String> records = this.getRecords();
+      records.forEach(record -> {
+        log.info("Got record: {}", record.value());
+        countDownLatch.countDown();
+      });
     }
+  }
+
+  public synchronized ConsumerRecords<String, String> getRecords() {
+    return kafkaConsumer.poll(Duration.of(300, ChronoUnit.MILLIS));
   }
 
   private Map<String, Object> consumerConfiguration() {
@@ -48,7 +69,8 @@ public class PureKafkaConsumer {
   }
 
   @PreDestroy
-  public void close() {
+  public synchronized void close() {
+    shouldRun.set(false);
     kafkaConsumer.close();
   }
 }

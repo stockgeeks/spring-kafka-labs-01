@@ -16,11 +16,10 @@ In the first part of these labs you will create and practice along with the trai
 In the second part of the labs you will expand your initial project and create and practice: 
 
 - A docker-compose file to run Kafa and Schema registry
-- Use sprink-kafka beans to configure new clients
-- Create a basic REST endpoint with TEST in Spring which we will connect to a producer in later exercises.
-- Create a Producer using an Avro schema and use a kafka avro console consumer
-- Create a Consumer using an Avro schema and use a kafka avro console producer
+- Create a Producer using an Avro schema and use a kafka avro console consumer using spring-kafka beans.
+- Create a Consumer using an Avro schema and use a kafka avro console producer using spring-kafka beans.
 - Operate basic endpoints from the schema registry
+- Create a basic Spring REST endpoint and connect to a producer and consumer.
 
 
 # How to do the labs

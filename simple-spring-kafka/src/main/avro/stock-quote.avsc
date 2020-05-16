@@ -1,0 +1,16 @@
+{
+ "namespace": "io.stockgeeks.avro",
+ "type": "record",
+ "name": "StockQuote",
+ "fields": [
+   { "name": "symbol", "type": "string"},
+   { "name": "high", "type": "double"},
+   { "name": "low", "type": "double"},
+   { "name": "tradeValue", "type": "double"},
+   { "name": "exchange",
+        "type": { "type": "enum", "name": "Exchange",
+        "symbols": ["AMEX", "NASDAQ","NYSE"]}
+   },
+   { "name": "tradeTime", "type": "string", "logicalType": "timestamp-millis"}
+ ]
+}

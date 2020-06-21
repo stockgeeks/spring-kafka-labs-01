@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AvroProducer {
   private final KafkaTemplate<String, StockQuote> quoteProducer;
+  private final static String TOPIC = "stock-quotes";
 
   public void publish(String key, StockQuote stockQuote) {
     quoteProducer.send(TOPIC, key, stockQuote);
   }
-  public static final String TOPIC = "stock-quotes";
 }

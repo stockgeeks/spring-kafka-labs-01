@@ -4,8 +4,8 @@
  "name": "StockQuote",
  "fields": [
    { "name": "symbol", "type": "string"},
-   { "name": "high", "type": "double"},
-   { "name": "low", "type": "double"},
+   { "name": "high", "type": ["null", "double"], "default": null},
+   { "name": "low", "type": ["null", "double"], "default", null},
    { "name": "tradeValue", "type": "double"},
    { "name": "exchange",
         "type": { "type": "enum", "name": "Exchange",

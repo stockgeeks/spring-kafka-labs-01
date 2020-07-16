@@ -5,12 +5,14 @@
  "fields": [
    { "name": "symbol", "type": "string"},
    { "name": "high", "type": ["null", "double"], "default": null},
-   { "name": "low", "type": ["null", "double"], "default", null},
+   { "name": "low", "type": ["null", "double"], "default": null},
    { "name": "tradeValue", "type": "double"},
+   { "name": "tradeTime", "type": "string", "logicalType": "timestamp-millis"},
    { "name": "exchange",
-        "type": { "type": "enum", "name": "Exchange",
-        "symbols": ["AMEX", "NASDAQ","NYSE"]}
-   },
-   { "name": "tradeTime", "type": "string", "logicalType": "timestamp-millis"}
+        "type": {
+            "type": "enum", "name": "Exchange",
+            "symbols": ["AMEX", "NASDAQ","NYSE"]
+        }
+   }
  ]
 }

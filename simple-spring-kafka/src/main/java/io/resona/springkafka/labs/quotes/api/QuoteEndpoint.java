@@ -17,7 +17,7 @@ import java.time.Instant;
 @RequiredArgsConstructor
 public class QuoteEndpoint {
 
-  private AvroProducer avroProducer;
+  private final AvroProducer avroProducer;
 
   @PostMapping
   public ResponseEntity<QuoteDTO> publishQuote(@RequestBody QuoteDTO quoteDTO) {
